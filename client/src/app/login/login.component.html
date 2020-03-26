@@ -1,0 +1,13 @@
+<form #loginForm="ngForm" (ngSubmit)="authUser(loginForm.form.value)">
+  <label>
+    Your email: <br>
+    <input type="email" name="email" #emailReg="ngModel" [ngStyle]="{border: emailReg.invalid && emailReg.touched ? 'solid 2px red' : 'solid 1px black'}" placeholder="example@site.com" email ngModel required>
+  </label>
+  <br>
+  <label>
+    Your password: <br>
+    <input type="password" name="password" #passReg="ngModel" [ngStyle]="{border: passReg.invalid && passReg.touched ? 'solid 2px red' : 'solid 1px black'}" placeholder="*******" minlength="4" ngModel required>
+  </label>
+  <br>
+  <button style="font-size: 150%" type="submit" [disabled]="loginForm.invalid">ВХІД</button>
+</form>

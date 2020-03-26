@@ -1,0 +1,13 @@
+<form #registerForm="ngForm" (ngSubmit)="registerUser(registerForm.form.value)">
+  <label>Enter your name: <br>
+    <input type="text" name="name" #nameReg="ngModel" [ngStyle]="{border: nameReg.invalid && nameReg.touched ? 'solid 2px red' : 'solid 1px black'}" minlength="2" maxlength="20" ngModel required>
+  </label> <br>
+  <label>  Enter your email: <br>
+    <input type="email" name="email" #emailReg="ngModel" [ngStyle]="{border: emailReg.invalid && emailReg.touched ? 'solid 2px red' : 'solid 1px black'}" placeholder="example@site.com" email ngModel required>
+  </label> <br>
+  <label>Enter your password: <br>
+    <input type="password" name="password" #passReg="ngModel" [ngStyle]="{border: passReg.invalid && passReg.touched ? 'solid 2px red' : 'solid 1px black'}" placeholder="******" minlength="4" ngModel required>
+  </label> <br>
+
+  <button style="font-size: 150%" type='submit' [disabled]="registerForm.invalid">Register me!</button>
+</form>
