@@ -4,4 +4,5 @@ export interface ApiRes {
   // msg: string;
   msg: object;
   user: string | object;
+  tasks: string | object;
 }

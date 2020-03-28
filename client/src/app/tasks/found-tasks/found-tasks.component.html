@@ -1,3 +1,4 @@
+<button (click)="toAllTasks()">Back to all tasks</button>
 <form class="header_form" #findForm="ngForm" (ngSubmit)="findTasks(findForm.form.value)">
   <label>
     <input type="text" name="subject" #subject="ngModel" [ngStyle]="{border: subject.invalid && subject.touched ? 'solid 2px red' : 'solid 1px black'}" minlength="1" maxlength="111" ngModel required>
@@ -16,4 +17,3 @@
     <div style="text-align: center"> {{UsersTasks.info}}</div>
   </div>
 </div>
-

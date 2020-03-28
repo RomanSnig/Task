@@ -5,6 +5,7 @@ const {checkHashPassword} = require('../../helpers/passwordHasher');
 module.exports.authUser = async (req, res) =>{
     try {
         const UserModel = db.getModel('user');
+        const TaskModel = db.getModel('task');
         const {email = '', password = ''} = req.body;
         if (!email || !password) {
             throw new Error('Some field is empty')
@@ -24,11 +25,16 @@ module.exports.authUser = async (req, res) =>{
 
         const token = tokenizer({id, name});
         delete isPresent.dataValues.password;
-
+        const userTasks = await TaskModel.findAll({
+            where: {
+                user: id
+            }
+        });
         res.json({
             access: true,
             msg: token,
-            user: isPresent
+            user: isPresent,
+            tasks: userTasks
         })
     }
     catch (e) {

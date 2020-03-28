@@ -1,0 +1,40 @@
+.my_tasks {
+  display: flex;
+  flex-wrap: wrap;
+  /*width: 30%;*/
+}
+.my_tasks div {
+  flex-basis: 33%;
+}
+.my_tasks_info {
+  flex-basis: 33%;
+  /*flex-grow: 1;*/
+  border: 1px solid gray;
+}
+.task_button {
+  background-color: chocolate;
+  color: aqua;
+  font-size: 120%
+}
+.task_button:hover {
+  color: black;
+}
+
+.form_info {
+  width: 70%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+.form_subject {
+  width: 70%;
+  padding: 5px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 40px;
+}

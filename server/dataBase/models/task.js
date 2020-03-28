@@ -5,6 +5,9 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             autoIncrement: true
         },
+        user: {
+            type: DataTypes.INTEGER,
+        },
         name: {
             type: DataTypes.STRING,
         },
@@ -18,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING
         }
     }, {
-        tableName: 'user',
+        tableName: 'tasks',
         timestamps: false
     });
     return task

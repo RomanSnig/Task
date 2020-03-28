@@ -1,5 +1,43 @@
-Welcome to your page: {{isTokenPresent.name}}
+Welcome to your page: <b>{{isTokenPresent.name}}</b>
 
 <br>
 
 <button (click)="Exit()">Exit!!</button>
+
+<button (click)="taskButton()" *ngIf="!taskEvent">Create new task</button>
+
+<form *ngIf="taskEvent" #taskForm = "ngForm" (ngSubmit)="newTask(taskForm.form.value)">
+  <label>Task subject: <br>
+    <textarea type="text" name="subject" #taskSubject="ngModel" class="form_subject" [ngStyle]="{border: taskSubject.invalid && taskSubject.touched ? 'solid 2px red' : 'solid 1px black'}" minlength="1" maxlength="111" ngModel required></textarea>
+  </label> <br>
+  <label>Task: <br>
+    <textarea type="text" name="info" #taskT="ngModel" class="form_info" [ngStyle]="{border: taskT.invalid && taskT.touched ? 'solid 2px red' : 'solid 1px black'}" minlength="10" maxlength="999" ngModel required></textarea>
+  </label> <br>
+  <button style="font-size: 150%" type='submit' [disabled]="taskForm.invalid">Create Task!</button>
+</form>
+<button *ngIf="taskEvent" (click)="taskButton()">Cancel</button>
+<br>
+
+<h2>My Tasks: </h2>
+<div class="my_tasks">
+  <div  *ngFor="let task of userTasks">
+    <div class="my_tasks_info">
+      <div class="task_subject"><b>Subject:</b> <b>{{task.subject}}</b> </div>
+      <div class="task_info"><b>Task:</b>{{task.info}}</div> <br>
+      <button class="task_button" (click)="deleteButton([task.id, task.user])">Delete this task</button>
+      <button class="task_button" (click)="editButton()" *ngIf="!myTaskChange">Edit this task</button>
+      <form #editTaskForm = "ngForm" (ngSubmit)="editTask(editTaskForm.form.value)" *ngIf="myTaskChange">
+        <label>Subject: <br>
+          <textarea type="text" name="subject" class="form_subject" ngModel="{{task.subject}}" #taskSubject="ngModel" [ngStyle]="{border: taskSubject.invalid && taskSubject.touched ? 'solid 2px red' : 'solid 1px black'}" minlength="1" maxlength="111" required></textarea>
+        </label> <br>
+        <label>Task: <br>
+          <textarea name="info" type="text" class="form_info" ngModel="{{task.info}}" #taskT="ngModel" [ngStyle]="{border: taskT.invalid && taskT.touched ? 'solid 2px red' : 'solid 1px black'}" required minlength="10" maxlength="999"></textarea>
+        </label> <br>
+        <textarea type="number" name="id" style="display: none" required ngModel="{{task.id}}"></textarea>
+        <textarea name="user" type="number" style="display: none" required ngModel="{{task.user}}"></textarea>
+          <button style="font-size: 150%" type='submit' [disabled]="editTaskForm.invalid">Change!</button>
+      </form>
+      <button *ngIf="myTaskChange" (click)="editButton()">Cancel</button>
+    </div>
+  </div>
+</div>

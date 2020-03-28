@@ -10,14 +10,18 @@ import {ApiRes} from '../models/ApiRes';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(    private authService: UserService,
-                  private router: Router) { }
+  constructor(private authService: UserService,
+              private router: Router) { }
 
   ngOnInit() {
   }
   authUser(loginForm) {
     this.authService.loginUser(loginForm).subscribe((data: ApiRes) => {
       // localStorage.setItem('token', 'res');
+      if (data.tasks > '') {
+        localStorage.setItem('task', JSON.stringify(data.tasks));
+      } else {console.log(false);
+      }
       console.log(data.success);
       console.log(data.msg);
       console.log(data.user);

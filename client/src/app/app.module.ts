@@ -10,13 +10,15 @@ import {HttpClientModule} from '@angular/common/http';
 import {RouterModule, Routes} from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { FoundTasksComponent } from './tasks/found-tasks/found-tasks.component';
 
 const routes: Routes = [
   {path: '', component: MainComponent},
   {path: 'login', component: LoginComponent},
   {path: 'registration', component: RegisterComponent},
   {path: 'userPage', component: UserPageComponent},
-  {path: 'tasks', component: TasksComponent}
+  {path: 'tasks', component: TasksComponent},
+  {path: 'tasks/foundTasks', component: FoundTasksComponent}
 ];
 
 @NgModule({
@@ -26,7 +28,8 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     MainComponent,
-    TasksComponent
+    TasksComponent,
+    FoundTasksComponent
   ],
   imports: [
     BrowserModule,
