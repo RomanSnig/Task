@@ -23,6 +23,8 @@ app.use('*', (req, res) => {
     res.status(404).json('Page not found!!!!!!!!');
 });
 
-app.listen(3000, () => {
-    console.log('CONNECTED!!');
-});
+// app.listen(3000, () => {
+//     console.log('CONNECTED!!');
+// });
+
+module.exports = app;
